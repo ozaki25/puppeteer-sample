@@ -6,27 +6,6 @@ jobs:
     steps:
       - checkout
       - run: yarn install
-      - run: yarn start
-workflows:
-  version: 2
-  execute-workflow:
-    triggers:
-      - schedule:
-          cron: '0 0,3,6,9,12,15,18,21 * * *'
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - execute
-version: 2
-jobs:
-  execute:
-    docker:
-      - image: circleci/node:latest-browsers
-    steps:
-      - checkout
-      - run: yarn install
       - run: node sample.js
 workflows:
   version: 2
